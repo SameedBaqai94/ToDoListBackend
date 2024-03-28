@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using ToDoListBackend.Data;
+using ToDoListBackend.Interfaces;
+using ToDoListBackend.Repository;
+
 namespace ToDoListBackend
 {
     public class Program
@@ -9,12 +14,24 @@ namespace ToDoListBackend
             // Add services to the container.
 
             builder.Services.AddControllers();
-
+            builder.Services.AddDbContext<DataContext>(options =>
+            {
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+            });
+            builder.Services.AddScoped<IToDoListRepository, ToDoListRepository>();
+            builder.Services.AddAutoMapper(typeof(Program));
             var app = builder.Build();
-
+            if (app.Environment.IsDevelopment())
+            {
+                using (var scope = app.Services.CreateScope())
+                {
+                    var dBContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+                    dBContext.Database.Migrate();
+                }
+            }
             // Configure the HTTP request pipeline.
-
-            app.UseHttpsRedirection();
+                
+            //app.UseHttpsRedirection();
 
             app.UseAuthorization();
 
