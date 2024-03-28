@@ -32,7 +32,7 @@ public class ToDoListRepository : IToDoListRepository
 
     public async Task<ToDoList> GetList(int ListId)
     {
-        var list = await _dataContext.ToDoList.Where(l => l.ToDoListId == ListId).Include(l => l.Items).FirstOrDefaultAsync();
+        var list = await _dataContext.ToDoList.Where(l => l.ToDoListId == ListId).FirstOrDefaultAsync();
         return list;
     }
 }

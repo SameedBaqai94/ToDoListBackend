@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj": {}
+    "/mnt/c/Users/baqai/Documents/Projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj": {}
   },
   "projects": {
-    "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj": {
+    "/mnt/c/Users/baqai/Documents/Projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
+        "projectUniqueName": "/mnt/c/Users/baqai/Documents/Projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
         "projectName": "ToDoListBackend",
-        "projectPath": "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
-        "packagesPath": "/home/chaotic/.nuget/packages/",
-        "outputPath": "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/obj/",
+        "projectPath": "/mnt/c/Users/baqai/Documents/Projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
+        "packagesPath": "/home/baqai/.nuget/packages/",
+        "outputPath": "/mnt/c/Users/baqai/Documents/Projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/chaotic/.nuget/NuGet/NuGet.Config"
+          "/home/baqai/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

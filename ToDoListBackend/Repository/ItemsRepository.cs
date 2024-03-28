@@ -21,8 +21,8 @@ public class ItemsRepository : IItemsRepository
         return true;
     }
 
-    public Task<ICollection<Items>> GetItems()
+    public async Task<ICollection<Items>> GetItems()
     {
-        throw new NotImplementedException();
+        return await _dataContext.Items.ToListAsync();
     }
 }

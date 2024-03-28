@@ -22,8 +22,15 @@ public class ItemsController : ControllerBase
         _listRepository = listRepository;
         _mapper = mapper;
     }
+    [HttpGet("GetItems")]
+    public async Task<IActionResult> GetItems()
+    {
+        var items = _mapper.Map<ICollection<Items>>(await _itemsRepository.GetItems());
+        return Ok(items);
+    }
 
-    [HttpPost("AddItem")]
+
+    [HttpPost("AddItems")]
     public async Task<IActionResult> AddItem([FromQuery] int todolistid, [FromBody] ItemsDto createItem)
     {
         var itemMap = _mapper.Map<Items>(createItem);

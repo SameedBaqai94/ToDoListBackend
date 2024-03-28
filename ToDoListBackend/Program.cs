@@ -19,6 +19,7 @@ namespace ToDoListBackend
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
             builder.Services.AddScoped<IToDoListRepository, ToDoListRepository>();
+            builder.Services.AddScoped<IItemsRepository, ItemsRepository>();
             builder.Services.AddAutoMapper(typeof(Program));
             var app = builder.Build();
             if (app.Environment.IsDevelopment())
@@ -30,7 +31,7 @@ namespace ToDoListBackend
                 }
             }
             // Configure the HTTP request pipeline.
-                
+
             //app.UseHttpsRedirection();
 
             app.UseAuthorization();
