@@ -10,6 +10,8 @@ public class ItemsRepository : IItemsRepository
 {
     private readonly DataContext _dataContext;
 
+
+
     public ItemsRepository(DataContext dataContext)
     {
         _dataContext = dataContext;
@@ -24,5 +26,36 @@ public class ItemsRepository : IItemsRepository
     public async Task<ICollection<Items>> GetItems()
     {
         return await _dataContext.Items.ToListAsync();
+    }
+
+    public async Task<bool> ItemExists(int ItemId)
+    {
+        if (!await _dataContext.Items.AnyAsync(i => i.ItemsId == ItemId))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public async Task<bool> RemoveItem(int itemId)
+    {
+        var item = await _dataContext.Items.FirstOrDefaultAsync(i => i.ItemsId == itemId);
+        _dataContext.Items.Remove(item);
+        return await _dataContext.SaveChangesAsync() > 0 ? true : false;
+    }
+
+    public async Task<bool> UpdateItems(int listId, int itemId, Items items)
+    {
+        var item = await _dataContext.Items.FindAsync(itemId);
+        if (items.Description != null && items.Description != item.Description)
+        {
+            item.Description = items.Description;
+        }
+        if (items.Status != null && items.Status != item.Status)
+        {
+            item.Status = items.Status;
+        }
+
+        return await _dataContext.SaveChangesAsync() > 0 ? true : false;
     }
 }

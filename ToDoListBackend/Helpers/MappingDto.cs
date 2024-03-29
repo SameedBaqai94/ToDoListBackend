@@ -4,14 +4,14 @@ using ToDoListBackend.Models;
 
 namespace ToDoListBackend.Helpers;
 
-public class MappingDto:Profile
+public class MappingDto : Profile
 {
     public MappingDto()
     {
-        CreateMap<ItemsDto, Items>();
-        CreateMap<Items, ItemsDto>();
-        CreateMap<ToDoListDto, ToDoList>();
-        CreateMap<ToDoList, ToDoListDto>();
-        
+        CreateMap<Items, ItemsReadDto>();
+        CreateMap<ItemsCreateOrUpdateDto, Items>();
+        CreateMap<ToDoList, ToDoListReadDto>();
+        CreateMap<ToDoListCreateOrUpdateDto, ToDoList>();
+
     }
 }

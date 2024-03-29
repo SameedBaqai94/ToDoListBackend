@@ -30,9 +30,38 @@ public class ToDoListRepository : IToDoListRepository
         return true;
     }
 
-    public async Task<ToDoList> GetList(int ListId)
+    public async Task<ToDoList> GetList(int listId)
     {
-        var list = await _dataContext.ToDoList.Where(l => l.ToDoListId == ListId).FirstOrDefaultAsync();
+        var list = await _dataContext.ToDoList.Where(l => l.ToDoListId == listId).FirstOrDefaultAsync();
         return list;
+    }
+
+    public async Task<bool> DeleteList(int listId)
+    {
+        var list = await _dataContext.ToDoList.FirstOrDefaultAsync(l => l.ToDoListId == listId);
+        if (list != null)
+        {
+            _dataContext.ToDoList.Remove(list);
+            await _dataContext.SaveChangesAsync();
+            return true;
+        }
+        return false;
+    }
+
+
+    public async Task<bool> ListExists(int listId)
+    {
+        if (!await _dataContext.ToDoList.AnyAsync(l => l.ToDoListId == listId))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public async Task<bool> UpdateList(int listId, ToDoList toDoList)
+    {
+        var list = await _dataContext.ToDoList.FindAsync(listId);
+        list.Title = toDoList.Title;
+        return await _dataContext.SaveChangesAsync() > 0 ? true : false;
     }
 }

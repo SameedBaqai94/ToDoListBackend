@@ -25,13 +25,12 @@ public class ItemsController : ControllerBase
     [HttpGet("GetItems")]
     public async Task<IActionResult> GetItems()
     {
-        var items = _mapper.Map<ICollection<Items>>(await _itemsRepository.GetItems());
+        var items = _mapper.Map<ICollection<ItemsReadDto>>(await _itemsRepository.GetItems());
         return Ok(items);
     }
 
-
-    [HttpPost("AddItems")]
-    public async Task<IActionResult> AddItem([FromQuery] int todolistid, [FromBody] ItemsDto createItem)
+    [HttpPost("AddItem")]
+    public async Task<IActionResult> AddItem([FromQuery] int todolistid, [FromBody] ItemsCreateOrUpdateDto createItem)
     {
         var itemMap = _mapper.Map<Items>(createItem);
         itemMap.ToDoList = await _listRepository.GetList(todolistid);
@@ -41,5 +40,47 @@ public class ItemsController : ControllerBase
             return StatusCode(500, ModelState);
         }
         return Ok("Successfully created");
+    }
+
+    [HttpPut("UpdateItem")]
+    public async Task<IActionResult> UpdateItem([FromQuery] int listId, [FromQuery] int itemId, [FromBody] ItemsCreateOrUpdateDto items)
+    {
+        if (items == null)
+        {
+            return NotFound(ModelState);
+        }
+        if (!await _listRepository.ListExists(listId) || !await _itemsRepository.ItemExists(itemId))
+        {
+            return BadRequest(ModelState);
+        }
+
+        var item = _mapper.Map<Items>(items);
+        if (!await _itemsRepository.UpdateItems(listId, itemId, item))
+        {
+            ModelState.AddModelError("", "Something went wrong updating Item");
+            return StatusCode(500, ModelState);
+        }
+        return StatusCode(200, "Item updated");
+    }
+
+    [HttpDelete("DeleteItem")]
+    public async Task<IActionResult> DeleteItem([FromQuery] int itemId)
+    {
+        if (itemId == 0)
+        {
+            ModelState.AddModelError("", "Invalid Id");
+            return BadRequest(ModelState);
+        }
+        if (!await _itemsRepository.ItemExists(itemId))
+        {
+            ModelState.AddModelError("", "Item not found");
+            return NotFound(ModelState);
+        }
+        if (!await _itemsRepository.RemoveItem(itemId))
+        {
+            ModelState.AddModelError("", "Something went wrong removing Item");
+            return StatusCode(500, ModelState);
+        }
+        return StatusCode(200, "Item removed");
     }
 }

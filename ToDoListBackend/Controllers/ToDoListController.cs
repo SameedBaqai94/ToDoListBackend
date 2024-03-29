@@ -25,12 +25,12 @@ public class ToDoListController : ControllerBase
    [HttpGet("GetList")]
    public async Task<IActionResult> GetList()
    {
-      var lists = _mapper.Map<ICollection<ToDoListDto>>(await _listRepository.GetLists());
+      var lists = _mapper.Map<ICollection<ToDoListReadDto>>(await _listRepository.GetLists());
       return Ok(lists);
    }
 
    [HttpPost("AddList")]
-   public async Task<IActionResult> AddList([FromBody] ToDoListDto createList)
+   public async Task<IActionResult> AddList([FromBody] ToDoListCreateOrUpdateDto createList)
    {
 
       var listMap = _mapper.Map<ToDoList>(createList);
@@ -42,5 +42,42 @@ public class ToDoListController : ControllerBase
       }
 
       return StatusCode(200, "list added");
+   }
+
+   [HttpDelete("DeleteList/{id}")]
+   public async Task<IActionResult> DeleteList(int id)
+   {
+      if (await _listRepository.ListExists(id) == false)
+      {
+         return NotFound();
+      }
+
+      if (!await _listRepository.DeleteList(id))
+      {
+         return StatusCode(400, "Something went wrong");
+      }
+      return StatusCode(200, "List deleted");
+   }
+
+   [HttpPut("UpdateList/{id}")]
+   public async Task<IActionResult> UpdateList(int id, [FromBody] ToDoListCreateOrUpdateDto toDoListDto)
+   {
+      if (!await _listRepository.ListExists(id))
+      {
+         return NotFound();
+      }
+      if (toDoListDto == null)
+      {
+         return BadRequest();
+      }
+      var list = _mapper.Map<ToDoList>(toDoListDto);
+
+      if (!await _listRepository.UpdateList(id, list))
+      {
+         ModelState.AddModelError("", "Something went wrong updating list");
+         return StatusCode(500, ModelState);
+      }
+      return StatusCode(200, "List updated");
+
    }
 }
