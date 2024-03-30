@@ -1,0 +1,37 @@
+﻿version: "3.4"
+
+networks:
+  dev:
+    driver: "bridge"
+
+services:
+  todolistbackend:
+    image: todolistbackend
+    container_name: todolistbkend
+    build:
+      context: .
+      dockerfile: ToDoListBackend/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - dev
+  db:
+    image: postgres:latest
+    container_name: todolistdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: todolistdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - my_data_db:/var/lib/postgresql/data
+    networks:
+      - dev
+volumes:
+  my_data_db:
