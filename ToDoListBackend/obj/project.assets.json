@@ -2300,11 +2300,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
+      "projectUniqueName": "/home/chaotic/Documents/project/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
       "projectName": "ToDoListBackend",
-      "projectPath": "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
+      "projectPath": "/home/chaotic/Documents/project/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
       "packagesPath": "/home/chaotic/.nuget/packages/",
-      "outputPath": "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/obj/",
+      "outputPath": "/home/chaotic/Documents/project/ToDoList/backend/ToDoListBackend/ToDoListBackend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/chaotic/.nuget/NuGet/NuGet.Config"

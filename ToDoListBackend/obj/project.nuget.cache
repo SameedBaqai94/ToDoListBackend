@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "b3lbi8iEwYnP4t4NFEgmkQaAQ52A4ZisK8vaCLUG/ddY5Ug4qfLnBuAqZMEnWKQe5xYhADuy0VPf+0h5C7lBiQ==",
+  "dgSpecHash": "VQlv1dpUXAL0hTbCT3ldrLnxF6Y3eAwxpxOAAoDElH+GmCgNi0Pz12ngLFfZuDIfX9yR+FfJjObxTc1rojdszQ==",
   "success": true,
-  "projectFilePath": "/home/chaotic/Documents/projects/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
+  "projectFilePath": "/home/chaotic/Documents/project/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
   "expectedPackageFiles": [
     "/home/chaotic/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/home/chaotic/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",

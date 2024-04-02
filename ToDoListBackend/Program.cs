@@ -9,9 +9,20 @@ namespace ToDoListBackend
     {
         public static void Main(string[] args)
         {
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                policy =>
+                                {
+                                    policy.WithOrigins("http://127.0.0.1:5500")
+                                    .AllowAnyHeader()
+                                    .AllowAnyMethod();
+                                });
+            });
 
             builder.Services.AddControllers();
             builder.Services.AddDbContext<DataContext>(options =>
@@ -34,8 +45,8 @@ namespace ToDoListBackend
 
             //app.UseHttpsRedirection();
 
-            app.UseAuthorization();
-
+            //app.UseAuthorization();
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.MapControllers();
 
