@@ -1,5 +1,10 @@
 namespace ToDoListBackend.Dto;
 
+public class ToDoListIdDto
+{
+    public int ToDoListId { get; set; }
+}
+
 
 public class ToDoListCreateOrUpdateDto
 {

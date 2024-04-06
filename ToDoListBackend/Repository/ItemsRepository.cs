@@ -28,6 +28,12 @@ public class ItemsRepository : IItemsRepository
         return await _dataContext.Items.ToListAsync();
     }
 
+    public async Task<ICollection<Items>> GetItemsByListId(int listId)
+    {
+        var items = await _dataContext.Items.Where(i => i.ToDoListId == listId).ToListAsync();
+        return items;
+    }
+
     public async Task<bool> ItemExists(int ItemId)
     {
         if (!await _dataContext.Items.AnyAsync(i => i.ItemsId == ItemId))

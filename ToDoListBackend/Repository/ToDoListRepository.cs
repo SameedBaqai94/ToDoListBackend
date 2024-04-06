@@ -13,6 +13,8 @@ public class ToDoListRepository : IToDoListRepository
     {
         _dataContext = dataContext;
     }
+
+
     public async Task<ICollection<ToDoList>> GetLists()
     {
         return await _dataContext.ToDoList.Include(l => l.Items).ToListAsync();
@@ -61,7 +63,21 @@ public class ToDoListRepository : IToDoListRepository
     public async Task<bool> UpdateList(int listId, ToDoList toDoList)
     {
         var list = await _dataContext.ToDoList.FindAsync(listId);
+        if (list == null)
+        {
+            return false;
+        }
         list.Title = toDoList.Title;
         return await _dataContext.SaveChangesAsync() > 0 ? true : false;
+    }
+
+    public async Task<int> GetListIdByTitle(string title)
+    {
+        var list = await _dataContext.ToDoList.FirstOrDefaultAsync(i => i.Title == title);
+        if (list == null)
+        {
+            return -1;
+        }
+        return list.ToDoListId;
     }
 }

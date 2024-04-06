@@ -10,6 +10,7 @@ public class MappingDto : Profile
     {
         CreateMap<Items, ItemsReadDto>();
         CreateMap<ItemsCreateOrUpdateDto, Items>();
+        CreateMap<ToDoList, ToDoListIdDto>();
         CreateMap<ToDoList, ToDoListReadDto>();
         CreateMap<ToDoListCreateOrUpdateDto, ToDoList>();
 

@@ -29,6 +29,13 @@ public class ItemsController : ControllerBase
         return Ok(items);
     }
 
+    [HttpGet("GetItemsByListId")]
+    public async Task<IActionResult> GetItemsByListId([FromQuery] int listId)
+    {
+        var items = _mapper.Map<ICollection<ItemsReadDto>>(await _itemsRepository.GetItemsByListId(listId));
+        return Ok(items);
+    }
+
     [HttpPost("AddItem")]
     public async Task<IActionResult> AddItem([FromQuery] int todolistid, [FromBody] ItemsCreateOrUpdateDto createItem)
     {

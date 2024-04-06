@@ -29,6 +29,13 @@ public class ToDoListController : ControllerBase
       return Ok(lists);
    }
 
+   [HttpGet("GetListId")]
+   public async Task<IActionResult> GetListId([FromQuery] string title)
+   {
+      var id = await _listRepository.GetListIdByTitle(title);
+      return Ok(new { id = id });
+   }
+
    [HttpPost("AddList")]
    public async Task<IActionResult> AddList([FromBody] ToDoListCreateOrUpdateDto createList)
    {

@@ -6,6 +6,7 @@ public interface IToDoListRepository
 {
     Task<ICollection<ToDoList>> GetLists();
     Task<ToDoList> GetList(int listId);
+    Task<int> GetListIdByTitle(string title);
     Task<bool> AddList(ToDoList toDoList);
 
     Task<bool> DeleteList(int listId);
