@@ -2295,24 +2295,26 @@
     ]
   },
   "packageFolders": {
-    "/home/chaotic/.nuget/packages/": {}
+    "C:\\Users\\baqai\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/chaotic/Documents/project/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
+      "projectUniqueName": "C:\\Users\\baqai\\Documents\\Projects\\ToDoList\\backend\\ToDoListBackend\\ToDoListBackend\\ToDoListBackend.csproj",
       "projectName": "ToDoListBackend",
-      "projectPath": "/home/chaotic/Documents/project/ToDoList/backend/ToDoListBackend/ToDoListBackend/ToDoListBackend.csproj",
-      "packagesPath": "/home/chaotic/.nuget/packages/",
-      "outputPath": "/home/chaotic/Documents/project/ToDoList/backend/ToDoListBackend/ToDoListBackend/obj/",
+      "projectPath": "C:\\Users\\baqai\\Documents\\Projects\\ToDoList\\backend\\ToDoListBackend\\ToDoListBackend\\ToDoListBackend.csproj",
+      "packagesPath": "C:\\Users\\baqai\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\baqai\\Documents\\Projects\\ToDoList\\backend\\ToDoListBackend\\ToDoListBackend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/chaotic/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\baqai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2369,7 +2371,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
